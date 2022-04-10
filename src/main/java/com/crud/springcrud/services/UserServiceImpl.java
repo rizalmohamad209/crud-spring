@@ -11,7 +11,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserServices{
 
    @Autowired
-   private UserRepository repo;
+   private final UserRepository repo;
 
     public UserServiceImpl(UserRepository repo) {
         this.repo = repo;
@@ -50,8 +50,7 @@ public class UserServiceImpl implements UserServices{
     public String Delete(Integer id) {
         repo.deleteById(id);
         return "User("+id+")"+"Has Been Deleted!";
-//        Optional<Users> userById = repo.findById(id);
-//        Users user = userById.get();
+
 
 
     }
