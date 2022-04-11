@@ -1,14 +1,17 @@
 package com.crud.springcrud.entites;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+
 import java.util.Set;
 
 @Entity
+
 @Table(name = "studio")
-public class Studio implements Serializable {
-    private static final long serialVersionUID = 4311391120455868020L;
+public class Studio  {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_studio;

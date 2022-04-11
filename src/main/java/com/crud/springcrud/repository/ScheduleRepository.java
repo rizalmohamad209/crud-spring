@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
-    @Query("SELECT s FROM Schedule s INNER JOIN s.films f WHERE f.nama_film = :filmName")
+    @Query("SELECT s FROM Schedule s INNER JOIN s.film f WHERE f.nama_film = :filmName")
     List<Schedule> findScheduleFilm(String filmName);
 
 

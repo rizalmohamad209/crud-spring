@@ -1,6 +1,7 @@
 package com.crud.springcrud.entites;
 
 import com.crud.springcrud.util.StatusFIlm;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+
+
 @Table(name = "film")
 public class Film implements Serializable {
     @Id
@@ -23,7 +26,7 @@ public class Film implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusFIlm status;
 
-    @OneToMany(mappedBy = "films",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "film",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Schedule> schedule;
 
 

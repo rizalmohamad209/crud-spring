@@ -1,6 +1,7 @@
 package com.crud.springcrud.controller;
 
 import com.crud.springcrud.entites.Schedule;
+import com.crud.springcrud.exception.ResourceNotFoundException;
 import com.crud.springcrud.services.ScheduleServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,13 @@ public class ScheduleController {
         return scheduleServices.Post(params);
     }
 
+    @PutMapping("/schedule/{id}")
+    public Schedule Put(@PathVariable Integer id,@RequestBody Schedule params)throws ResourceNotFoundException{
+        return scheduleServices.Put(id,params);
+    }
+
+
+
     @GetMapping("/schedule")
     public List<Schedule> Get(@RequestParam(value = "q",required = false) String filmName){
         if(filmName.isEmpty()){
@@ -32,6 +40,11 @@ public class ScheduleController {
             return scheduleServices.Get(filmName);
         }
 
+    }
+
+    @DeleteMapping("/schedule/{id}")
+    public String Delete(@PathVariable Integer id){
+        return scheduleServices.Delete(id);
     }
 
 

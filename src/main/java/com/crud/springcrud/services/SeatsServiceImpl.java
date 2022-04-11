@@ -34,4 +34,9 @@ public class SeatsServiceImpl implements SeatsServices{
     public Iterable<Seats> Get() {
         return seatsRepo.findAll();
     }
+
+    @Override
+    public Seats Get(Integer id) {
+        return null;
+    }
 }

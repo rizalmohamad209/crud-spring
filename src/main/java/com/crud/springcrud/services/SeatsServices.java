@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public interface SeatsServices {
     Seats Post(Seats params);
     Iterable<Seats> Get();
+    Seats Get(Integer id);
 //    Seats Put(Seats params, Integer id);
 //    String Delete(Integer id);
 
