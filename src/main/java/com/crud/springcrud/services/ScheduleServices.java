@@ -13,6 +13,8 @@ public interface ScheduleServices {
     Schedule Post(Schedule params) ;
     List<Schedule> Get(String filmName);
     List<Schedule>Get();
+
+    Schedule Get(Integer id) throws ResourceNotFoundException;
     Schedule Put(Integer id, Schedule params) throws ResourceNotFoundException;
     String Delete(Integer id);
 }

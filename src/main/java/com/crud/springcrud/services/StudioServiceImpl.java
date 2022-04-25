@@ -6,6 +6,8 @@ import com.crud.springcrud.repository.StudioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class StudioServiceImpl implements  StudioServices{
@@ -24,7 +26,7 @@ public class StudioServiceImpl implements  StudioServices{
     }
 
     @Override
-    public Iterable<Studio> Get() {
+    public List<Studio> Get() {
         return repo.findAll();
     }
 

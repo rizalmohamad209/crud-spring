@@ -32,7 +32,7 @@ public class ScheduleServiceImpl implements ScheduleServices{
     public Schedule Post(Schedule params) {
 
         System.out.println(params);
-       Optional<Film> optionalFilm =filmRepository.findById(params.getFilm().getId_film());
+        Optional<Film> optionalFilm =filmRepository.findById(params.getFilm().getId_film());
        Optional<Studio> optionalStudio = studioRepository.findById(params.getStudio().getId_studio());
         params.setFilm(optionalFilm.get());
         params.setStudio(optionalStudio.get());
@@ -50,6 +50,11 @@ public class ScheduleServiceImpl implements ScheduleServices{
     @Override
     public List<Schedule> Get() {
         return repo.findAll();
+    }
+
+    @Override
+    public Schedule Get(Integer id) throws ResourceNotFoundException {
+        return repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Schedule with id: "+id+" not found"));
     }
 
     @Override

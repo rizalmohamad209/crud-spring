@@ -26,8 +26,13 @@ public class Film implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusFIlm status;
 
+
     @OneToMany(mappedBy = "film",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Schedule> schedule;
+
+//    @OneToMany(targetEntity = Transaksi.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "film_id", referencedColumnName = "id_film")
+//    private Set<Transaksi> transaksis;
 
 
     public Integer getId_film() {

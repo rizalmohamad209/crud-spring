@@ -34,6 +34,7 @@ public class Schedule {
     private Integer harga_tiket;
 
 
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "films_id")
     private Film film;

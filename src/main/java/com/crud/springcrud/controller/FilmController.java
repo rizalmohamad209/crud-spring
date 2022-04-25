@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class FilmController {
@@ -24,36 +23,30 @@ public class FilmController {
     }
 
     @PostMapping("/film")
-    public Film Post(@RequestBody Film params){
-
-           return  filmServices.Post(params);
-
+    public ResponseEntity<Film>  Post(@RequestBody Film params){
+           return new ResponseEntity<>(filmServices.Post(params), HttpStatus.CREATED);
     };
 
     @GetMapping("/film")
-    public List<Film> Get(@RequestParam(value = "status",required = false)StatusFIlm status){
+    public ResponseEntity<List<Film>>  Get(@RequestParam(value = "status",required = false)StatusFIlm status){
         if(status == null){
-            return filmServices.Get();
+            return new ResponseEntity<>(filmServices.Get(),HttpStatus.OK);
         }else{
-            return filmServices.GetStatus(status);
+            return new ResponseEntity<>(filmServices.GetStatus(status), HttpStatus.OK);
         }
-//        return  filmServices.Get();
     }
 
-//    @GetMapping("/filmsearch")
-//    public List<Film> Get(@RequestParam(value = "status")StatusFIlm status){
-//
-//        return filmServices.GetStatus(status);};
     @GetMapping("/film/{id}")
-    public Film Get(@PathVariable Integer id) throws ResourceNotFoundException {
-        return filmServices.Get(id);
+    public ResponseEntity<Film>  Get(@PathVariable Integer id) throws ResourceNotFoundException {
+        return new ResponseEntity<>(filmServices.Get(id), HttpStatus.OK) ;
     };
     @PutMapping("/film/{id}")
-    public Film Put(@PathVariable Integer id, @RequestBody Film params) throws ResourceNotFoundException{
-        return filmServices.Put(params, id);
+    public ResponseEntity<Film>  Put(@PathVariable Integer id, @RequestBody Film params) throws ResourceNotFoundException{
+        return new ResponseEntity<>(filmServices.Put(params, id), HttpStatus.ACCEPTED) ;
     };
     @DeleteMapping("/film/{id}")
-    public String Delete(@PathVariable Integer id){
-        return filmServices.Delete(id) ;
+    public ResponseEntity<String>  Delete(@PathVariable Integer id){
+
+        return new ResponseEntity<>(filmServices.Delete(id), HttpStatus.ACCEPTED) ;
     }
 }

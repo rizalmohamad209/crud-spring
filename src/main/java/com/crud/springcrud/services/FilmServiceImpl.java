@@ -7,13 +7,19 @@ import com.crud.springcrud.util.StatusFIlm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 
 @Service
 public class FilmServiceImpl implements FilmServices{
+
     @Autowired
     private final FilmRepository repo;
+
+
+
+
 
     public FilmServiceImpl(FilmRepository repo) {
         this.repo = repo;
@@ -21,6 +27,7 @@ public class FilmServiceImpl implements FilmServices{
 
     @Override
     public Film Post(Film params) {
+
          repo.save(params);
         return params;
     }

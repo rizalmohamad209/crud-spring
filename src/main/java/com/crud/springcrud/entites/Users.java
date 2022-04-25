@@ -3,6 +3,7 @@ package com.crud.springcrud.entites;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 
@@ -28,6 +29,10 @@ public class Users {
     @Column(nullable = false, length = 100, name = "last_name")
     private String lastName;
 
+
+//    @OneToMany(targetEntity = Transaksi.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    private Set<Transaksi> transaksis;
 
 
 
